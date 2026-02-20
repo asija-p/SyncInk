@@ -1,4 +1,4 @@
-wFront:
+`wFront:
 npm i
 ng serve
 
@@ -91,4 +91,4 @@ JWT__AUDIENCE=SyncInkClient
 JWT__EXPIREMINUTES=60
 
 
-Napomena: Nakon registracije potrebno je uraditi login. U slucaju da SignalR ne uspostavi konekciju odmah potrebno je refresovati stranicu.
+Napomena: Nakon registracije potrebno je uraditi login. U slucaju da SignalR ne uspostavi konekciju odmah potrebno je refresovati stranicu.`
