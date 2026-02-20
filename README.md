@@ -1,4 +1,4 @@
-`wFront:
+wFront:
 npm i
 ng serve
 
@@ -66,7 +66,7 @@ CREATE TABLE drawing_activity_counters (
 CREATE TABLE drawing_activity_state (
                    room_name text,
                    minute_bucket timestamp,
-                   active_users set<uuid>,
+                   active_users set&lt;uuid&gt;,
                    PRIMARY KEY ((room_name), minute_bucket)
                ) WITH CLUSTERING ORDER BY (minute_bucket ASC);
 
@@ -91,4 +91,4 @@ JWT__AUDIENCE=SyncInkClient
 JWT__EXPIREMINUTES=60
 
 
-Napomena: Nakon registracije potrebno je uraditi login. U slucaju da SignalR ne uspostavi konekciju odmah potrebno je refresovati stranicu.`
+Napomena: Nakon registracije potrebno je uraditi login. U slucaju da SignalR ne uspostavi konekciju odmah potrebno je refresovati stranicu.
