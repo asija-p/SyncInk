@@ -25,7 +25,7 @@ Komande za Kasandru:
 
 docker pull cassandra:latest
 docker run -d --name cassandra-SyncInk -p 9042:9042 cassandra:latest
-docker exec -it cassandra cqlsh
+docker exec -it cassandra-SyncInk cqlsh
 CREATE KEYSPACE IF NOT EXISTS syncinkcdb
 WITH replication = {'class': 'SimpleStrategy', 'replication_factor': 1};
 
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS latest_snapshot_by_user (
     PRIMARY KEY (user_id, saved_at, room_name)
 ) WITH CLUSTERING ORDER BY (saved_at DESC);
 
-CREATE TABLE IF NOT EXISTS strokes_by_snapshot (
+CREATE TABLE strokes_by_snapshot (
     user_id uuid,
     room_name text,
     save_id uuid,
@@ -49,7 +49,9 @@ CREATE TABLE IF NOT EXISTS strokes_by_snapshot (
     saved_at timestamp,
     size double,
     stroke_date timestamp,
-    PRIMARY KEY ((user_id, room_name, save_id), stroke_id);
+    visible boolean,
+    PRIMARY KEY ((user_id, room_name, save_id), stroke_id)
+) WITH CLUSTERING ORDER BY (stroke_id ASC);
 
 
 CREATE TABLE drawing_activity_counters (
